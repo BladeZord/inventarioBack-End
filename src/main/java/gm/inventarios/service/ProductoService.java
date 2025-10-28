@@ -5,6 +5,7 @@ import gm.inventarios.repository.ProductoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,6 +27,13 @@ public class ProductoService implements IProductoService{
 
     @Override
     public Producto guardarProducto(Producto producto) {
+
+        if (producto.getIdProducto() == null) {
+            producto.setFechaCreacion(LocalDateTime.now());
+            producto.setFechaActualizacion(null);
+        } else {
+            producto.setFechaActualizacion(LocalDateTime.now());
+        }
         return this.productoRepositorio.save(producto);
     }
 
