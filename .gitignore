@@ -33,6 +33,7 @@ build/
 .vscode/
 
 # Archivos de configuración sensibles
-application.properties
+# application.properties
+application-dev.properties
 application.yml
 application.yaml
